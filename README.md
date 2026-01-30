@@ -29,30 +29,6 @@ CSV File
 
 ---
 
-## 📂 Project Structure
-
-sales-data-etl/
-│
-├── data/
-│ ├── raw/
-│ │ └── sales_data.csv
-│ └── processed/
-│ └── cleaned_sales_data.csv
-│
-├── etl/
-│ ├── extract.py
-│ ├── transform.py
-│ ├── load.py
-│
-├── config/
-│ └── config.py
-│
-├── main.py
-├── requirements.txt
-└── README.md
-
----
-
 ## 📥 Data Source
 - **Type:** CSV File  
 - **Records:** 1,000+ sales transactions  
