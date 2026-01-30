@@ -1,4 +1,4 @@
-# Sales Data ETL Pipeline (PostgreSQL + AWS S3)
+# Sales Data ETL Pipeline
 
 ## 📌 Overview
 This project implements a **complete end-to-end ETL (Extract, Transform, Load) pipeline** using Python.  
