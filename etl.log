@@ -1,0 +1,9 @@
+2026-02-04 21:49:30,633 - INFO - NumExpr defaulting to 4 threads.
+2026-02-04 21:49:31,586 - INFO - Data extracted successfully from data/raw/sales_data.csv
+2026-02-04 21:49:31,587 - INFO - Data validation passed
+2026-02-04 21:49:31,599 - INFO - Data transformed successfully
+2026-02-04 21:49:31,663 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2026-02-04 21:49:36,370 - INFO - Uploaded sales-data/raw/sales_data.csv to S3
+2026-02-04 21:49:41,266 - INFO - Uploaded sales-data/processed/cleaned_sales_data.csv to S3
+2026-02-04 21:49:41,425 - INFO - Data loaded into PostgreSQL successfully
+2026-02-04 21:49:41,426 - INFO - ETL Process Completed Successfully
