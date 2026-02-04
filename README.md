@@ -26,13 +26,13 @@ Store (AWS S3 – Raw & Processed)
 
 ## 🛠️ Tech Stack
 
-- Programming Language: Python  
-- Data Processing: Pandas  
-- Database: PostgreSQL  
-- Cloud Storage: AWS S3  
-- Libraries: psycopg2, boto3  
-- Logging: Python logging module  
-- Version Control: Git & GitHub  
+- **Programming Language:** Python  
+- **Data Processing:** Pandas  
+- **Database:** PostgreSQL  
+- **Cloud Storage:** AWS S3  
+- **Libraries:** psycopg2, boto3  
+- **Logging:** Python logging module 
+- **Version Control:** Git & GitHub  
 
 ---
 
