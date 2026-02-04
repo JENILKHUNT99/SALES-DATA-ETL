@@ -1,62 +1,45 @@
-# Sales Data ETL Pipeline (PostgreSQL + AWS S3)
+# Sales Data ETL Pipeline 
 
 ## 📌 Overview
-This project implements a **complete end-to-end ETL (Extract, Transform, Load) pipeline** using Python.  
-The pipeline processes raw sales data from CSV files, applies business transformations, loads the processed data into a **PostgreSQL database**, and stores both raw and processed data in **AWS S3**.
+This project implements a production-style end-to-end ETL (Extract, Transform, Load) pipeline using Python.  
+The pipeline processes raw sales data from CSV files, applies business and data-quality transformations, loads the processed data into a PostgreSQL database, and archives both raw and processed datasets in AWS S3.
 
-This project is designed to simulate **real-world Data Engineering workflows** used for analytics, reporting, and downstream data processing.
+The project reflects real-world Data Engineering workflows, including logging, validation, and performance-aware database loading used in analytics and reporting systems.
 
 ---
 
 ## 🏗️ Architecture
 
 CSV File  
-→ Extract (Python, Pandas)  
-→ Transform (Feature Engineering)  
-→ Load (PostgreSQL Database)  
-→ Store (AWS S3)
+↓  
+Extract (Python, Pandas)  
+↓  
+Validate (Data Quality Checks)  
+↓  
+Transform (Feature Engineering)  
+↓  
+Load (PostgreSQL – Batch Insert)  
+↓  
+Store (AWS S3 – Raw & Processed)
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Programming Language:** Python  
-- **Data Processing:** Pandas  
-- **Database:** PostgreSQL  
-- **Cloud Storage:** AWS S3  
-- **Libraries:** psycopg2, boto3  
-- **Version Control:** Git & GitHub  
-
----
-
-## 📂 Project Structure
-
-sales-data-etl/
-│
-├── data/
-│ ├── raw/
-│ │ └── sales_data.csv
-│ └── processed/
-│ └── cleaned_sales_data.csv
-│
-├── etl/
-│ ├── extract.py
-│ ├── transform.py
-│ ├── load.py
-│
-├── config/
-│ └── config.py
-│
-├── main.py
-├── requirements.txt
-└── README.md
+- Programming Language: Python  
+- Data Processing: Pandas  
+- Database: PostgreSQL  
+- Cloud Storage: AWS S3  
+- Libraries: psycopg2, boto3  
+- Logging: Python logging module  
+- Version Control: Git & GitHub  
 
 ---
 
 ## 📥 Data Source
-- **Type:** CSV File  
-- **Records:** 1,000+ sales transactions  
-- **Columns Include:**  
+- Type: CSV File  
+- Records: 1,000+ sales transactions  
+- Columns include:
   - Product details  
   - Sales region and sales representative  
   - Quantity sold, unit price, unit cost  
@@ -66,11 +49,18 @@ sales-data-etl/
 
 ## 🔄 ETL Pipeline Details
 
-### 1️⃣ Extract
+### 1. Extract
 - Reads raw sales data from a CSV file
 - Loads data into a Pandas DataFrame
+- Logs extraction status and failures
 
-### 2️⃣ Transform
+### 2. Validate
+- Checks for null values in critical columns
+- Ensures no negative values in quantity or pricing fields
+- Verifies valid date formats  
+- Prevents bad data from entering downstream systems
+
+### 3. Transform
 - Converts date columns to proper datetime format
 - Performs feature engineering:
   - Revenue = Quantity × Unit Price
@@ -78,15 +68,15 @@ sales-data-etl/
   - Profit = Revenue − Cost
 - Produces analytics-ready data
 
-### 3️⃣ Load (Database)
-- Loads transformed data into **PostgreSQL**
-- Creates a structured table suitable for analytics and BI tools
+### 4. Load (PostgreSQL)
+- Loads transformed data into PostgreSQL
+- Uses batch inserts for improved performance
+- Creates structured tables suitable for analytics and BI tools
 
-### 4️⃣ Load (Cloud Storage)
-- Uploads:
-  - Raw CSV data to AWS S3
-  - Processed CSV data to AWS S3
-- Maintains clear folder separation (`raw/` and `processed/`)
+### 5. Load (AWS S3)
+- Uploads raw CSV data to AWS S3
+- Uploads processed CSV data to AWS S3
+- Maintains clear separation between raw and processed datasets
 
 ---
 
